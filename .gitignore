@@ -1,4 +1,8 @@
 
-node_modules
-package-lock.json
+/# Ambientes de desenvolvimento
 .env
+/node_modules
+/data
+/docker-compose.yml
+/package-lock.json
+
