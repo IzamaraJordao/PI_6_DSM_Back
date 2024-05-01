@@ -1,40 +1,53 @@
-// Arquivo: src/login/login.service.ts
+// login.service.ts
 import { Injectable } from '@nestjs/common';
-import { PrismaClient, Login, User } from '@prisma/client';
+import { PrismaClient, Login } from '@prisma/client';
+import { CreateLoginDto, UpdateLoginDto } from './login.dto';
 import prisma from '../prisma/prisma.service';
-
-type LoginData = Omit<Login, 'id'>;
-
 @Injectable()
 export class LoginService {
-  private readonly prisma: PrismaClient;
-
+  private readonly prisma: PrismaClient;  
   constructor() {
     this.prisma = prisma;
   }
 
-  async create(data: LoginData) {
+  async create(data: CreateLoginDto): Promise<Login> {
+    const { email, password, userId } = data;
     return this.prisma.login.create({
-      data,
+      data: { email, password, userId },
     });
   }
 
-  async findLoginByEmail(email: string) {
-    return this.prisma.login.findFirst({
-      where: { email }, // Usando o campo 'email' para buscar o login
+  async findAll(): Promise<Login[]> {
+    return this.prisma.login.findMany();
+  }
+
+  async findById(id: string): Promise<Login | null> {
+    return this.prisma.login.findUnique({
+      where: { id },
     });
   }
 
-  async findUserById(userId: string) {
-    return this.prisma.user.findUnique({
-      where: { id: userId },
+  async update(id: string, data: UpdateLoginDto): Promise<Login | null> {
+    const { password } = data;
+    return this.prisma.login.update({
+      where: { id },
+      data: { password },
     });
   }
 
-  async updateUserLastAccess(userId: string) {
-    return this.prisma.user.update({
-      where: { id: userId },
-      data: {},
+  async delete(id: string): Promise<Login | null> {
+    return this.prisma.login.delete({
+      where: { id },
     });
+  }
+
+  async countDistinctUsersAccessedPlatform(): Promise<number> {
+    const distinctUsers = await this.prisma.login.findMany({
+      select: {
+        userId: true,
+      },
+      distinct: ['userId'],
+    });
+    return distinctUsers.length;
   }
 }

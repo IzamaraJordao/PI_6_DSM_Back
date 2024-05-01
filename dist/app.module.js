@@ -10,11 +10,14 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const login_model_1 = require("./login/login.model");
 const user_model_1 = require("./user/user.model");
+const genre_model_1 = require("./genre/genre.model");
+const movies_model_1 = require("./movies/movies.model");
+const status_model_1 = require("./status/status.model");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [login_model_1.LoginModule, user_model_1.UserModule],
+        imports: [login_model_1.LoginModule, user_model_1.UserModule, genre_model_1.GenreModule, movies_model_1.MoviesModule, status_model_1.StatusModule],
     })
 ], AppModule);

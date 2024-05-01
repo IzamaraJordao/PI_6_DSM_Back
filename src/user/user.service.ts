@@ -1,4 +1,4 @@
-// Arquivo: src/user/user.service.ts
+
 import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import prisma from '../prisma/prisma.service';
@@ -38,5 +38,22 @@ export class UserService {
     return this.prisma.user.delete({
       where: { id },
     });
+  }
+
+  async countNewUsersThisMonth(): Promise<number> {
+    const currentDate = new Date();
+    const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    const newUsersCount = await this.prisma.user.count({
+      where: {
+        dateRegistered: {
+          gte: firstDayOfMonth,
+        },
+      },
+    });
+    return newUsersCount;
+  }
+  async countTotalUsers(): Promise<number> {
+    const totalUsersCount = await this.prisma.user.count();
+    return totalUsersCount;
   }
 }

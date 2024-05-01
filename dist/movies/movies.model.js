@@ -1,4 +1,5 @@
 "use strict";
+// movie.model.ts
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6,17 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginModule = void 0;
+exports.MoviesModule = void 0;
 const common_1 = require("@nestjs/common");
-const login_service_1 = require("./login.service");
-const login_controller_1 = require("./login.controller");
-let LoginModule = class LoginModule {
+const movies_service_1 = require("./movies.service");
+const movies_controller_1 = require("./movies.controller");
+let MoviesModule = class MoviesModule {
 };
-exports.LoginModule = LoginModule;
-exports.LoginModule = LoginModule = __decorate([
+exports.MoviesModule = MoviesModule;
+exports.MoviesModule = MoviesModule = __decorate([
     (0, common_1.Module)({
         imports: [],
-        controllers: [login_controller_1.LoginController],
-        providers: [login_service_1.LoginService],
+        controllers: [movies_controller_1.MoviesController],
+        providers: [movies_service_1.MoviesService],
     })
-], LoginModule);
+], MoviesModule);

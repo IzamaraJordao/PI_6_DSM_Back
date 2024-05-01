@@ -22,7 +22,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
-// Arquivo: src/user/user.service.ts
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = __importDefault(require("../prisma/prisma.service"));
 let UserService = class UserService {
@@ -61,6 +60,26 @@ let UserService = class UserService {
             return this.prisma.user.delete({
                 where: { id },
             });
+        });
+    }
+    countNewUsersThisMonth() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const currentDate = new Date();
+            const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const newUsersCount = yield this.prisma.user.count({
+                where: {
+                    dateRegistered: {
+                        gte: firstDayOfMonth,
+                    },
+                },
+            });
+            return newUsersCount;
+        });
+    }
+    countTotalUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const totalUsersCount = yield this.prisma.user.count();
+            return totalUsersCount;
         });
     }
 };

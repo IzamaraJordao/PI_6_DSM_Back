@@ -1,4 +1,5 @@
 "use strict";
+// movies.service.ts
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -21,64 +22,56 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginService = void 0;
-// login.service.ts
+exports.MoviesService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = __importDefault(require("../prisma/prisma.service"));
-let LoginService = class LoginService {
+let MoviesService = class MoviesService {
     constructor() {
         this.prisma = prisma_service_1.default;
     }
     create(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, password, userId } = data;
-            return this.prisma.login.create({
-                data: { email, password, userId },
+            return this.prisma.movies.create({
+                data,
             });
         });
     }
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.prisma.login.findMany();
+            return this.prisma.movies.findMany();
         });
     }
     findById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.prisma.login.findUnique({
+            return this.prisma.movies.findUnique({
                 where: { id },
             });
         });
     }
     update(id, data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { password } = data;
-            return this.prisma.login.update({
+            return this.prisma.movies.update({
                 where: { id },
-                data: { password },
+                data,
             });
         });
     }
     delete(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.prisma.login.delete({
+            return this.prisma.movies.delete({
                 where: { id },
             });
         });
     }
-    countDistinctUsersAccessedPlatform() {
+    countTotalMovies() {
         return __awaiter(this, void 0, void 0, function* () {
-            const distinctUsers = yield this.prisma.login.findMany({
-                select: {
-                    userId: true,
-                },
-                distinct: ['userId'],
-            });
-            return distinctUsers.length;
+            const totalMoviesCount = yield this.prisma.movies.count();
+            return totalMoviesCount;
         });
     }
 };
-exports.LoginService = LoginService;
-exports.LoginService = LoginService = __decorate([
+exports.MoviesService = MoviesService;
+exports.MoviesService = MoviesService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [])
-], LoginService);
+], MoviesService);

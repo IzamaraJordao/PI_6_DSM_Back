@@ -1,5 +1,5 @@
 "use strict";
-// login.controller.ts
+// status.controller.ts
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,77 +22,77 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginController = void 0;
+exports.StatusController = void 0;
 const common_1 = require("@nestjs/common");
-const login_service_1 = require("./login.service");
-const login_dto_1 = require("./login.dto");
-let LoginController = class LoginController {
-    constructor(loginService) {
-        this.loginService = loginService;
+const status_service_1 = require("./status.service");
+const status_dto_1 = require("./status.dto");
+let StatusController = class StatusController {
+    constructor(statusService) {
+        this.statusService = statusService;
     }
-    create(createLoginDto) {
+    create(createStatusDto) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.loginService.create(createLoginDto);
+            return this.statusService.create(createStatusDto);
         });
     }
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.loginService.findAll();
+            return this.statusService.findAll();
         });
     }
     findById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.loginService.findById(id);
+            return this.statusService.findById(id);
         });
     }
-    update(id, updateLoginDto) {
+    update(id, updateStatusDto) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.loginService.update(id, updateLoginDto);
+            return this.statusService.update(id, updateStatusDto);
         });
     }
     delete(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.loginService.delete(id);
+            return this.statusService.delete(id);
         });
     }
 };
-exports.LoginController = LoginController;
+exports.StatusController = StatusController;
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [login_dto_1.CreateLoginDto]),
+    __metadata("design:paramtypes", [status_dto_1.CreateStatusDto]),
     __metadata("design:returntype", Promise)
-], LoginController.prototype, "create", null);
+], StatusController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], LoginController.prototype, "findAll", null);
+], StatusController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], LoginController.prototype, "findById", null);
+], StatusController.prototype, "findById", null);
 __decorate([
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, login_dto_1.UpdateLoginDto]),
+    __metadata("design:paramtypes", [String, status_dto_1.UpdateStatusDto]),
     __metadata("design:returntype", Promise)
-], LoginController.prototype, "update", null);
+], StatusController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], LoginController.prototype, "delete", null);
-exports.LoginController = LoginController = __decorate([
-    (0, common_1.Controller)('login'),
-    __metadata("design:paramtypes", [login_service_1.LoginService])
-], LoginController);
+], StatusController.prototype, "delete", null);
+exports.StatusController = StatusController = __decorate([
+    (0, common_1.Controller)('status'),
+    __metadata("design:paramtypes", [status_service_1.StatusService])
+], StatusController);
