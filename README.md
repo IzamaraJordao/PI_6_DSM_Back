@@ -28,7 +28,10 @@
 
 **Instale as dependências do backend:**
  - cd backend
- - npm install
+ - yarn add 
+
+**Rode as migrações do banco de dados:**
+  - npx migrate dev
 
 **Inicie o servidor backend:**
-   - npm start
+   - yarn start

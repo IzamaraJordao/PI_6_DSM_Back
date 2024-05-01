@@ -22,10 +22,6 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateGenreDto.prototype, "genre", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], CreateGenreDto.prototype, "movieId", void 0);
 class UpdateGenreDto {
     constructor(updateGenreDto) {
         Object.assign(this, updateGenreDto);

@@ -61,13 +61,11 @@ model movies {
 model status {
   id    String @id @default(uuid())
   status String
-  movieId String
-  movie movies @relation(fields: [movieId], references: [id])
+  movies movies[]
 }
 
 model genre {
   id    String @id @default(uuid())
   genre String
-  movieId String
-  movie movies @relation(fields: [movieId], references: [id])
+ movies movies[]
 }

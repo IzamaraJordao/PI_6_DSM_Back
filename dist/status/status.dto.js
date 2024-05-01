@@ -22,10 +22,6 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateStatusDto.prototype, "status", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], CreateStatusDto.prototype, "movieId", void 0);
 class UpdateStatusDto {
     constructor(updateStatusDto) {
         Object.assign(this, updateStatusDto);

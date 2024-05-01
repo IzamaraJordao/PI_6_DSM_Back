@@ -6,9 +6,6 @@ export class CreateStatusDto {
   @IsNotEmpty()
   status!: string;
 
-  @IsNotEmpty()
-  movieId!: string;
-
   constructor(createStatusDto: CreateStatusDto) {
     Object.assign(this, createStatusDto);
   }

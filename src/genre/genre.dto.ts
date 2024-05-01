@@ -1,13 +1,10 @@
 // genre.dto.ts
 
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty } from "class-validator";
 
 export class CreateGenreDto {
   @IsNotEmpty()
   genre!: string;
-
-  @IsNotEmpty()
-  movieId!: string;
 
   constructor(createGenreDto: CreateGenreDto) {
     Object.assign(this, createGenreDto);
